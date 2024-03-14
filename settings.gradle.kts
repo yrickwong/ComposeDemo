@@ -14,4 +14,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ComposeDemoApp"
-include(":app")
+include(":AdoptPuppyDog")
