@@ -3,8 +3,9 @@
   <component name="mboxProjectView">
     <option name="contentRoots">
       <list>
+        <option value="$PROJECT_DIR$/AdoptPuppyDog" />
         <option value="$PROJECT_DIR$" />
-        <option value="$PROJECT_DIR$/app" />
+        <option value="$PROJECT_DIR$/GiftPanelCompose" />
       </list>
     </option>
   </component>

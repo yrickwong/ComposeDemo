@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "ComposeDemoApp"
 include(":AdoptPuppyDog")
+include(":GiftPanelCompose")

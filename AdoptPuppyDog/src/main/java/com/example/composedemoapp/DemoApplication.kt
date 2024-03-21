@@ -4,17 +4,19 @@ import android.app.Application
 import com.airbnb.mvrx.Mavericks
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by wangyi.huohuo on 12/3/24
  * @author wangyi.huohuo@bytedance.com
  */
-class DemoApplication:Application() {
+class DemoApplication : Application() {
 
 
     override fun onCreate() {
@@ -29,6 +31,13 @@ class DemoApplication:Application() {
 
 
 private val dogServiceModule = module {
+
+    factory {
+        OkHttpClient.Builder()
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .build()
+    }
+
     factory {
         Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
@@ -37,6 +46,7 @@ private val dogServiceModule = module {
 
     factory {
         Retrofit.Builder()
+            .client(get<OkHttpClient>())
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create(get<Moshi>()))
             .build()
